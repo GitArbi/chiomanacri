@@ -1,0 +1,38 @@
+function _modal(){
+	modal.style.display = 'flex';
+/*
+	$('#modal_container').dialog({
+		width:350,
+		height:380,
+		show:'fade',
+		hide:'fade',
+		modal:!0,
+		draggable:!1,
+		resizable:!1
+	})
+*/
+	}
+
+$('#modal_select_country').bind('change',function(e){fs_select_country()});function fs_select_country(){$.getJSON('/general/ajax_home_country.phtml?lang='+lang+'&site='+$('#modal_select_country').val(),function(data){$.each(data,function(i,item){if(item.field=='cities'){$('#modal_select_city option:gt(0)').remove();$('#modal_select_city').append(item.value)}})})}
+function validateDestination(){if(document.forms.modal_destination_form.country.value==0){return!1}}
+function UpdateCountry(country){if(country=='99'){window.top.location.href='https://www.rosesnboxes.com/'+rnb_link;return!0}
+if(country=='0'||country==0){return!0}
+window.top.location.href='https://'+conf_home_lang+'/setcountry.phtml?country='+country;return!0}
+$('#country_select').bind('change',function(e){
+	
+	var pais = Number($(this).val());
+	if (pais == 99) {
+		$('#country_select').val('0');
+		_modal_rnb();
+	}
+	
+	$.getJSON('/general/ajax_home_country.phtml?lang='+lang+'&site='+$('#country_select').val(),function(data){$.each(data,function(i,item){if(item.field=='cities'){$('#select_city option:gt(0)').remove();$('#select_city').append(item.value)}else if(item.field=='occasions'){$('#select_occasion option:gt(0)').remove();$('#select_occasion').append(item.value)}})})});function validate123finder(){if(document.forms['123finder'].city.value==0){if(document.forms['123finder'].country.value!=0){var country_select=document.forms['123finder'].country.value;$('#modal_select_country').val(country_select);fs_select_country()}
+_modal();return!1}}
+$(document).ready(function(){if($('#owl-demo-hf').length){$("#owl-demo-hf").owlCarousel({navigation:!1,slideSpeed:300,paginationSpeed:400,singleItem:!0,pagination:carrousel_nav,autoPlay:10000})}});function queryStr(queryName){queryString=window.location.search.substring(1);queryStringSplit=queryString.split("&");for(i=0;i<queryStringSplit.length;i++){queryResult=queryStringSplit[i].split("=");if(queryResult[0]==queryName){return queryResult[1]}}}
+if(queryStr("cyEmail")){cy.Custom8="urlemail";cy.Custom1="";cy.UserId=unescape(queryStr("cyEmail"));cy.FunnelLevel="0";cy_getImageSrc()}
+function addBookmark(title,url){if(window.sidebar){window.sidebar.addPanel(title,url,"")}else if(document.all){window.external.AddFavorite(url,title)}else if(window.opera&&window.print){return!0}else{alert(lang_bookmark_instructions)}}
+function checkText(){if(document.forms.search_products.w.value==''||document.forms.search_products.w.value==lang_enter_product){document.forms.search_products.w.value='*'}else{return!0}}
+function popupfacebook(url){var int_windowLeft=(screen.width-400)/2;var int_windowTop=(screen.height-400)/2;window.open(url,'loginface','location=1,status=1,scrollbars=1,  width=400,height=400, top='+int_windowTop+', left='+int_windowLeft)}
+function cargar_idioma(){url_go=$('#idioma').val();window.location(url_go)}
+function show_son_div(box1,box_show,class_on,class_over){$('#'+box1).removeClass(class_on).addClass(class_over);var offset=$('#'+box1).offset();x=(offset.left)*1;y=(offset.top+$('#'+box1).height())*1;$('#'+box_show).css({'left':x,'top':y});$('#'+box1).mouseleave(function(e){$('#'+box1).removeClass(class_over).addClass(class_on);$('#'+box_show).css({'left':-500,'top':-500})});$('#'+box_show).mouseover(function(e){$('#'+box1).removeClass(class_on).addClass(class_over);$('#'+box_show).css({'left':x,'top':y})})
+$('#'+box_show).mouseleave(function(e){$('#'+box1).removeClass(class_over).addClass(class_on);$('#'+box_show).css({'left':-500,'top':-500})})}

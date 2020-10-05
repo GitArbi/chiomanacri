@@ -1,0 +1,5 @@
+function popUp(URL,width,height,left,top,toolbar,scrollbars,location,statusbar,menubar,resizable) {
+	day = new Date();
+	id = day.getTime();
+	eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar='+toolbar+',scrollbars='+scrollbars+',location='+location+',statusbar='+statusbar+',menubar='+menubar+',resizable='+resizable+',width='+width+',height='+height+',left='+left+',top='+top);");
+}
